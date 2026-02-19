@@ -1,0 +1,158 @@
+/* --- 공통 배경 및 여백 장식 --- */
+body {
+    background-color: #f4f6f8;
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    color: #111;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 배경 블러 원 (왼쪽 상단) */
+body::before {
+    content: '';
+    position: fixed;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(176, 209, 148, 0.4) 0%, rgba(176, 209, 148, 0) 70%);
+    filter: blur(50px);
+    z-index: -1;
+}
+
+/* 배경 블러 원 (오른쪽 하단) */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -150px;
+    right: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(206, 232, 187, 0.5) 50%, rgba(209, 228, 195, 0) 70%);
+    filter: blur(50px);
+    z-index: -1;
+}
+
+/* 사이드 텍스트 장식 (PC 전용) */
+.side-deco {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 800;
+    color: #979da4;
+    letter-spacing: 4px;
+    writing-mode: vertical-rl;
+    opacity: 0.6;
+    pointer-events: none;
+    /* 클릭 방해 금지 */
+}
+
+.side-deco.left {
+    left: 40px;
+}
+
+.side-deco.right {
+    right: 40px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+@media (max-width: 1100px) {
+    .side-deco {
+        display: none;
+    }
+}
+
+/* 중앙 컨테이너 박스 (로그인/회원가입 전용) */
+.app {
+    background-color: #ffffff;
+    padding: 45px 35px;
+    border-radius: 28px;
+    /* 메인 카드와 통일된 라운드 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* 제목 */
+.main-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+/* 입력창 (로그인과 높이/스타일 통일) */
+input {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    margin-bottom: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    box-sizing: border-box;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+}
+
+/* 비밀번호 불일치 경고문 */
+.re-pw-alert {
+    font-size: 13px;
+    color: #ff4d4f;
+    /* 세련된 레드톤 */
+    text-align: left;
+    margin: -8px 0 12px 4px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 로그인하러 가기 문구 */
+.toLink {
+    font-size: 14px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.link-btn {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+}
+
+/* 확인 버튼 (로그인 버튼과 동일한 블랙) */
+.sign-in-btn {
+    width: 100%;
+    height: 52px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.sign-in-btn:hover {
+    background-color: #b0d194;
+    /* 살짝 밝아지는 효과 */
+}

@@ -1,0 +1,217 @@
+/* --- 공통 배경 및 여백 장식 --- */
+body {
+    background-color: #f4f6f8;
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* 화면 정중앙에 컨테이너 배치 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 배경 블러 원 (왼쪽 상단) */
+body::before {
+    content: '';
+    position: fixed;
+    top: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(176, 209, 148, 0.4) 0%, rgba(176, 209, 148, 0) 70%);
+    filter: blur(50px);
+    z-index: -1;
+}
+
+/* 배경 블러 원 (오른쪽 하단) */
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -150px;
+    right: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(206, 232, 187, 0.5) 50%, rgba(209, 228, 195, 0) 70%);
+    filter: blur(50px);
+    z-index: -1;
+}
+
+/* 사이드 장식 */
+.side-deco {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 800;
+    color: #979da4;
+    letter-spacing: 4px;
+    writing-mode: vertical-rl;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.side-deco.left {
+    left: 40px;
+}
+
+.side-deco.right {
+    right: 40px;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+@media (max-width: 1100px) {
+    .side-deco {
+        display: none;
+    }
+}
+
+/* --- 로고 및 박스 레이아웃 --- */
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* 로고와 박스를 세로로 나열 */
+    align-items: flex-start;
+    /* 로고를 왼쪽 끝에 맞춤 */
+    width: 100%;
+    max-width: 380px;
+    /* .app과 동일한 너비 */
+    padding: 20px;
+}
+
+.head {
+    margin-bottom: 20px;
+    /* 로고와 박스 사이 간격 */
+    padding-left: 5px;
+    /* 로고 왼쪽 여백 살짝 */
+}
+
+.head-title {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.head-title span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #b0d194;
+    margin-bottom: 3px;
+}
+
+/* 중앙 컨테이너 박스 */
+.app {
+    background-color: #ffffff;
+    padding: 45px 35px;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+    /* 패딩이 너비에 영향 안 주게 설정 */
+    text-align: center;
+}
+
+.main-title {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* 입력창 스타일 */
+input {
+    width: 100%;
+    height: 52px;
+    /* 높이를 조금 더 키워 시원하게 */
+    padding: 0 15px;
+    margin-bottom: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background-color: #fcfcfc;
+    box-sizing: border-box;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s;
+}
+
+input:focus {
+    border: 1px solid #b0d194;
+    /* 포커스 시 그린 포인트 컬러 적용 */
+    background-color: #fff;
+}
+
+.error-msg p {
+    font-size: 12px;
+    color: #f83b3b;
+    margin: 5px 0 0 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+    width: 100%;
+    height: 56px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #b0d194;
+}
+
+/* 링크 스타일 */
+.toLink {
+    font-size: 14px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.link-btn {
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px solid #333;
+}
+
+/* 소셜 로그인 */
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-login img {
+    width: 40px;
+    height: 40px;
+}
+
+.google,
+.naver {
+    background: #fff;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: none;
+}
+
+.social-login button:hover {
+    transform: scale(1.1);
+}

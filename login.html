@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+
+<body>
+    <div class="side-deco left">TRACK YOUR LIFE</div>
+    <div class="side-deco right">SMART SUBSCRIPTION</div>
+
+    <div class="login-wrapper">
+        <div class="head">
+            <h1 class="head-title">
+                구독관리서비스<span>.site</span>
+            </h1>
+        </div>
+
+        <div class="app">
+            <h1 class="main-title">Login</h1>
+
+            <input type="text" class="id-input" placeholder="아이디를 입력하세요">
+            <input type="password" class="pw-input" placeholder="비밀번호를 입력하세요">
+
+            <div class="error-msg hidden">
+                <p>아이디 또는 비밀번호가 일치하지 않습니다.</p>
+            </div>
+
+            <p class="toLink">계정이 없으신가요? <a href="/signup" class="link-btn">회원가입</a></p>
+
+            <div class="social-login">
+                <button class="google"><img src="images/google.png" alt="구글"></button>
+                <button class="naver"><img src="images/naver.png" alt="네이버"></button>
+            </div>
+
+            <button class="login-btn">로그인</button>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>

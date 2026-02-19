@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. 브라우저 기본 스크롤바 숨기기 */
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #EDEFEF;
+    font-family: sans-serif;
+
+    /* 스크롤은 되지만 바는 안 보이게 (표준) */
+    -ms-overflow-style: none;
+    /* IE, Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Chrome, Safari 브라우저 스크롤바 숨기기 */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#app::-webkit-scrollbar,
+.icon-select::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 90%;
+    max-width: 450px;
+    height: 90%;
+    /* 화면의 90% 높이만 차지 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    /* 내용이 넘치면 스크롤 가능하게 */
+    overflow-y: auto;
+    padding-right: 5px;
+    /* 스크롤할 때 내용이 잘리지 않게 살짝 여백 */
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.head-title {
+    color: #0595EE;
+    font-weight: bold;
+}
+
+.close-btn {
+    background-color: #D9D9D9;
+    font-size: 14px;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-container {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 15px 0;
+    flex-shrink: 0;
+    /* 박스가 찌그러지지 않게 고정 */
+}
+
+.sub-title1 {
+    margin: 0 20px 10px 20px;
+    padding-bottom: 8px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+.icon-select {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 0 20px;
+    overflow-x: auto;
+}
+
+.service-list {
+    display: flex;
+    flex-direction: column;
+    /* 세로로 나열 */
+    max-height: 200px;
+    /* 너무 길어지지 않게 높이 제한 */
+    overflow-y: auto;
+    /* 높이 넘어가면 스크롤 */
+    padding: 0 20px;
+}
+
+
+.service-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 개별 리스트 아이템 디자인 */
+.service-item {
+    padding: 12px 0;
+    font-size: 15px;
+    color: #333;
+    border-bottom: 1px solid #f5f5f5;
+    /* 아이템 사이 구분선 */
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.service-item:last-child {
+    border-bottom: none;
+    /* 마지막 아이템은 선 없음 */
+}
+
+.service-item:hover {
+    color: #0595EE;
+    /* 마우스 올리면 파랗게 */
+    font-weight: bold;
+}
+
+/* add-container 높이 조절 */
+.add-container {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 15px 0;
+    flex-shrink: 0;
+}
+
+.icon-text {
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+}
+
+.input-box {
+    margin: 0 20px;
+}
+
+input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding: 5px 0;
+    background: transparent;
+}
+
+.btn-space {
+    margin-right: 8px;
+    padding: 6px 12px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-space:hover {
+    background-color: #eee;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구독 통합 관리 서비스</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="head">
+            <h1 class="head-title">구독관리서비스<span>.site</span></h1>
+            <button class="logout-btn">로그아웃</button>
+        </div>
+        <div class="total-money-container">
+            <p class="total-money-title">이번 달 총 결제 예정 금액</p>
+            <h3 class="total-money">000원</h3>
+        </div>
+        <div class="main-box">
+            <p class="sub-title1">다가오는 결제</p>
+            <div class="sub-box1" id="upcoming-list"></div>
+        </div>
+        <div class="main-box">
+            <p class="sub-title1">나의 구독 서비스</p>
+            <div class="sub-box2">
+                <img class="mini-icon">
+                <p class="service-name">Netflix</p>
+                <p class="pay-date">매월 2일</p>
+                <p class="service-price">17,000원</p>
+                <button class="delete-btn">X</button>
+            </div>
+        </div>
+        <div class="add-service-btn">
+            <button id="open-modal-btn">서비스 등록</button>
+        </div>
+    </div>
+
+    <div id="add-modal" class="hidden">
+        <div class="modal-content">
+            <div class="head">
+                <h1 class="head-title">Add</h1>
+                <button class="close-btn">닫기</button>
+            </div>
+            <div class="add-container">
+                <p class="sub-title1">서비스명</p>
+                <div class="input-box">
+                    <input type="text">
+                </div>
+            </div>
+            <div class="add-container">
+                <p class="sub-title1">서비스 선택</p>
+                <div class="service-list">
+                    <div class="service-item">Netflix</div>
+                    <div class="service-item">YouTube Premium</div>
+                    <div class="service-item">Disney+</div>
+                    <div class="service-item">TVING</div>
+                    <div class="service-item">쿠팡 와우</div>
+                    <div class="service-item">네이버 플러스</div>
+                    <div class="service-item">Melon</div>
+                    <div class="service-item">Spotify</div>
+                    <div class="service-item">기타</div>
+                </div>
+            </div>
+            <div class="add-container">
+                <p class="sub-title1">결제 금액</p>
+                <div class="input-box">
+                    <input type="number" placeholder="0원">
+                </div>
+            </div>
+            <div class="add-container">
+                <p class="sub-title1">결제 주기</p>
+                <div class="input-box">
+                    <button class="btn-space cycle-btn active">달마다</button>
+                    <button class="btn-space cycle-btn">년마다</button>
+                    <input type="number" class="input-cycle" placeholder="주기를 입력하세요 (2달마다)">
+                </div>
+            </div>
+            <div class="add-container">
+                <p class="sub-title1">결제일</p>
+                <div class="input-box">
+                    <input type="date">
+                </div>
+            </div>
+            <div class="add-container">
+                <p class="sub-title1">알림</p>
+                <div class="input-box-scroll">
+                    <button class="btn-space alert-btn">알람 없음</button>
+                    <button class="btn-space alert-btn active">1일 전</button>
+                    <button class="btn-space alert-btn">2일 전</button>
+                    <button class="btn-space alert-btn">3일 전</button>
+                    <button class="btn-space alert-btn">4일 전</button>
+                    <button class="btn-space alert-btn">5일 전</button>
+                </div>
+            </div>
+            <button class="submit-service">등록하기</button>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

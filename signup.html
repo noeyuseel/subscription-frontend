@@ -12,7 +12,17 @@
     <div class="app">
         <h1 class="main-title">Sign in</h1>
         <input type="text" class="id-input" placeholder="아이디를 입력하세요">
-        <input type="email" class="email-input" placeholder="알림을 받으실 이메일 주소">
+        <div class="email-wrapper">
+            <input type="email" class="email-input" placeholder="알림을 받으실 이메일 주소">
+            <button class="verify-email">인증</button>
+        </div>
+        <div class="code-wrapper hidden">
+            <input type="number" class="verify-code" placeholder="인증코드 6자리">
+            <button class="code-check">확인</button>
+        </div>
+        <div class="code-error hidden">
+            <p> <span>인증 코드가 일치하지 않습니다.</span> </p>
+        </div>
         <input type="password" class="pw-input" placeholder="비밀번호를 입력하세요">
         <input type="password" class="re-pw-input" placeholder="비밀번호를 다시 한 번 입력하세요">
         <p class="re-pw-alert hidden">비밀번호가 일치하지 않습니다.</p>

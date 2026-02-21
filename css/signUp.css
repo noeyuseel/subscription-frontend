@@ -110,13 +110,48 @@ input:focus {
     background-color: #fff;
 }
 
+.email-wrapper,
+.code-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.email-input,
+.verify-code {
+    flex: 3;
+    /* 입력창이 더 넓게 */
+    margin-bottom: 0;
+}
+
+.verify-email,
+.code-check {
+    flex: 1;
+    /* 버튼은 작게 */
+    white-space: nowrap;
+    background-color: #eee;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
 /* 비밀번호 불일치 경고문 */
-.re-pw-alert {
+.re-pw-alert,
+.code-error span {
     font-size: 13px;
     color: #ff4d4f;
     /* 세련된 레드톤 */
     text-align: left;
     margin: -8px 0 12px 4px;
+}
+
+.re-code {
+    color: rgb(2, 2, 97);
+    background: none;
+    cursor: pointer;
+    text-decoration: underline;
+    border: none;
 }
 
 .hidden {

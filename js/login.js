@@ -21,8 +21,9 @@ loginBtn.onclick = async () => {
         });
 
         if (response.status === 200) {
+            const result = response.json();
             window.location.href = "/"
-            localStorage.setItem('access', response.data.accessToken);
+            localStorage.setItem('access', result.data.accessToken);
         } else {
             const errorMsg = document.querySelector('.error-msg');
             errorMsg.classList.remove('hidden');

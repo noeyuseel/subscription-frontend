@@ -15,7 +15,7 @@ function refreshTotal() {
 refreshTotal();
 document.addEventListener('DOMContentLoaded', async function () {
     refreshTotal(); // 페이지 로드 시 총액 계산 실행
-    let token = localstorage.getItem('access');
+    let token = localStorage.getItem('access');
     const param =
     {
         "page": 0,

@@ -28,8 +28,9 @@ submitBtn.onclick = async function () {
     const dday = new Date(realdate);
     const price = inputPrice.value;
     const cycle = selectedCycle;
-
     const token = localStorage.getItem('access');
+    const activeAlarmBtn = document.querySelector('.alert-btn.active');
+    const alarmValue = activeAlarmBtn ? activeAlarmBtn.innerText : "0";
 
     const response = await fetch(`${url}/api/subscription`, {
         method: "POST",
@@ -38,14 +39,14 @@ submitBtn.onclick = async function () {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            "category": `${category}`,
-            "name": `${name}`,
-            "paymentCycle": `${cycle}`,
-            "cycleInterval": `${cycleNumber}`,
-            "dday": `${dday}`,
-            "price": `${price}`,
+            "category": category.innerText,
+            "name": name,
+            "paymentCycle": cycle,
+            "cycleInterval": cycleNumber.value,
+            "dday": dday,
+            "price": price,
             "alarm": [
-                parseInt(alarm)
+                parseInt(alarmValue)
             ]
         })
 
@@ -58,8 +59,8 @@ submitBtn.onclick = async function () {
             window.location.href = "/login";
         } else if (reissue.status === 200) {
             const reissueResult = await reissue.json();
-            localStrage.setItem('access', reissueResult.data.accessToken);
-            const againResponse = await fetch(`{url}/api/subscription`, {
+            localStorage.setItem('access', reissueResult.data.accessToken);
+            const againResponse = await fetch(`${url}/api/subscription`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

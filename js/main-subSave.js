@@ -35,7 +35,7 @@ submitBtn.onclick = async function () {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearear ${token}`
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             "category": `${category}`,
@@ -63,7 +63,7 @@ submitBtn.onclick = async function () {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearear ${reissueResult.data.accessToken}`
+                    'Authorization': `Bearer ${reissueResult.data.accessToken}`
                 },
                 body: JSON.stringify({
                     "category": `${category}`,

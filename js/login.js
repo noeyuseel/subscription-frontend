@@ -21,7 +21,7 @@ loginBtn.onclick = async () => {
         });
 
         if (response.status === 200) {
-            const result = response.json();
+            const result = await response.json();
             window.location.href = "/"
             localStorage.setItem('access', result.data.accessToken);
         } else {

@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (tokenReissue.status === 401) {
             window.location.href = "/login";
         } else if (tokenReissue.status === 200) {
-            const tokenResult = tokenReissue.json();
+            const tokenResult = await tokenReissue.json();
             localStorage.setItem('access', tokenResult.data.accessToken);
             let response2 = await fetch(`${url}/api/subscription?${queryString}`
                 , {
                     method: "GET",
                     headers: { 'Athorization': `Bearer ${tokenResult.data.accessToken}` }
                 });
-            const requestResult = response2.json();
+            const requestResult = await response2.json();
             if (requestResult.data.content.length === 0) {
                 const noSub = `<p>구독 정보가 없습니다.</p>`
                 subscriptionList.insertAdjacent('beforeend', noSub);
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
     else if (subGetResponse.status === 200) {
-        const result = subGetResponse.json();
+        const result = await subGetResponse.json();
         if (result.data.content.length === 0) {
             const noSub = `<p>구독 정보가 없습니다.</p>`
             subscriptionList.insertAdjacent('beforeend', noSub);

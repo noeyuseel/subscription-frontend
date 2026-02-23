@@ -33,9 +33,10 @@ submitBtn.onclick = async function () {
 
     const response = await fetch(`{url}/api/subscription`, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json',
-            'Authorization':`Bearear ${token}` 
-         },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearear ${token}`
+        },
         body: JSON.stringify({
             "category": `${category}`,
             "name": `${name}`,
@@ -56,12 +57,13 @@ submitBtn.onclick = async function () {
         if (reissue.status === 401) {
             window.location.href = "/login";
         } else if (reissue.status === 200) {
-            const reissueResult = reissue.json();
+            const reissueResult = await reissue.json();
             localStrage.setItem('access', reissueResult.data.accessToken);
             const againResponse = await fetch(`{url}/api/subscription`, {
                 method: "POST",
-                headers: { 'Content-Type': 'application/json',
-                    'Authorization':`Bearear ${reissueResult.data.accessToken}` 
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearear ${reissueResult.data.accessToken}`
                 },
                 body: JSON.stringify({
                     "category": `${category}`,

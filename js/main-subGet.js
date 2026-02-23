@@ -115,7 +115,7 @@ function getCycle(paymentCycle, interval) {
 }
 
 const subscriptionBox = document.querySelectorAll('.main-box')[1];
-const subscriptionList = document.querySelector('sub-box2');
+const subscriptionList = document.querySelector('.sub-box2');
 subscriptionBox.onclick = function (event) {
     if (event.target.classList.contains('delete-btn')) {
         const targetBox = event.target.closest('.sub-box2');

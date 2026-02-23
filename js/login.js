@@ -22,8 +22,8 @@ loginBtn.onclick = async () => {
 
         if (response.status === 200) {
             const result = await response.json();
-            window.location.href = "/"
             localStorage.setItem('access', result.data.accessToken);
+            window.location.href = "/"
         } else {
             const errorMsg = document.querySelector('.error-msg');
             errorMsg.classList.remove('hidden');

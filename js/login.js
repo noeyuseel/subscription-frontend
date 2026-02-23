@@ -12,6 +12,7 @@ loginBtn.onclick = async () => {
         const response = await fetch(`${url}/api/auth/login`, {
 
             method: 'POST',
+            credentials: "include",
             headers: { 'content-Type': 'application/json' },
             body: JSON.stringify({
                 "username": `${idInput}`,
@@ -20,7 +21,8 @@ loginBtn.onclick = async () => {
         });
 
         if (response.status === 200) {
-            window.location.href = "/main"
+            window.location.href = "/"
+            localStorage.setItem('access', response.data.accessToken);
         } else {
             const errorMsg = document.querySelector('.error-msg');
             errorMsg.classList.remove('hidden');

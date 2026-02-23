@@ -130,7 +130,8 @@ body::after {
     margin: 30px 0 15px 5px;
 }
 
-.sub-box2 {
+.sub-box2,
+.sub-box1 {
     background: #fff;
     padding: 15px 20px;
     border-radius: 24px;
@@ -139,6 +140,57 @@ body::after {
     gap: 15px;
     margin-bottom: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.no-alert-subscription {
+    font-size: 15px;
+    width: 100%;
+    text-align: left;
+}
+
+
+.sub-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    gap: 12px;
+    padding: 5px 0;
+}
+
+.sub-item p:nth-child(3) {
+    flex-grow: 1;
+    margin: 0;
+    text-align: left;
+}
+
+.sub-item p:last-child {
+    margin-left: auto;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+}
+
+.badge.red {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+}
+
+.badge.orange {
+    background-color: #ffa502;
+}
+
+.badge.green {
+    background-color: #2ed573;
+
 }
 
 .sub-box2:hover {

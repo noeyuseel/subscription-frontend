@@ -31,7 +31,7 @@ submitBtn.onclick = async function () {
 
     const token = localStorage.getItem('access');
 
-    const response = await fetch(`{url}/api/subscription`, {
+    const response = await fetch(`${url}/api/subscription`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

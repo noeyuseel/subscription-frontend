@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const requestResult = await response2.json();
             if (requestResult.data.content.length === 0) {
                 const noSub = `<p>구독 정보가 없습니다.</p>`
-                subscriptionList.insertAdjacent('beforeend', noSub);
+                subscriptionList.insertAdjacentHTML('beforeend', noSub);
             } else {
                 const resultList = requestResult.data.content.map(item => {
                     let name = item.name;
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const result = await subGetResponse.json();
         if (result.data.content.length === 0) {
             const noSub = `<p>구독 정보가 없습니다.</p>`
-            subscriptionList.insertAdjacent('beforeend', noSub);
+            subscriptionList.insertAdjacentHTML('beforeend', noSub);
         } else {
             const resultList = result.data.content.map(item => {
                 let name = item.name;

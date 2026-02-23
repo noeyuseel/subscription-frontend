@@ -64,17 +64,17 @@ submitBtn.onclick = async function () {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${reissueResult.data.accessToken}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    "category": `${category}`,
-                    "name": `${name}`,
-                    "paymentCycle": `${cycle}`,
-                    "cycleInterval": `${cycleNumber}`,
-                    "dday": `${dday}`,
-                    "price": `${price}`,
+                    "category": category.innerText,
+                    "name": name,
+                    "paymentCycle": cycle,
+                    "cycleInterval": cycleNumber.value,
+                    "dday": dday,
+                    "price": price,
                     "alarm": [
-                        parseInt(alarm)
+                        parseInt(alarmValue)
                     ]
                 })
             });

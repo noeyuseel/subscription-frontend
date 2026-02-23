@@ -1,3 +1,6 @@
+const subscriptionBox = document.querySelectorAll('.main-box')[1];
+const subscriptionList = document.querySelector('.sub-box2');
+
 function refreshTotal() {
     const priceElement = document.querySelectorAll('.service-price');
     let totalPrice = 0;
@@ -114,8 +117,6 @@ function getCycle(paymentCycle, interval) {
     return result;
 }
 
-const subscriptionBox = document.querySelectorAll('.main-box')[1];
-const subscriptionList = document.querySelector('.sub-box2');
 subscriptionBox.onclick = function (event) {
     if (event.target.classList.contains('delete-btn')) {
         const targetBox = event.target.closest('.sub-box2');

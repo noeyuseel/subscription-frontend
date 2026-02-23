@@ -15,7 +15,6 @@ function refreshTotal() {
     totalDisplay.innerHTML = totalPrice.toLocaleString() + "원";
 }
 
-refreshTotal();
 document.addEventListener('DOMContentLoaded', async function () {
     refreshTotal(); // 페이지 로드 시 총액 계산 실행
     let token = localStorage.getItem('access');
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             let response2 = await fetch(`${url}/api/subscription?${queryString}`
                 , {
                     method: "GET",
-                    headers: { 'Athorization': `Bearer ${tokenResult.data.accessToken}` }
+                    headers: { 'Authorization': `Bearer ${tokenResult.data.accessToken}` }
                 });
             const requestResult = await response2.json();
             if (requestResult.data.content.length === 0) {
@@ -101,10 +100,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     } else if (subGetResponse.status === 404) {
         console.log("유저를 찾을 수 없습니다.");
     }
+    refreshTotal();
 });
 
 function getCycle(paymentCycle, interval) {
-    const result = "매";
+    let result = "매";
     if (paymentCycle === 'MONTH') {
         if (interval === 1) {
             result += "월"

@@ -19,7 +19,7 @@ const cycleNumber = document.querySelector('.input-cycle');
 const alarm = document.querySelector('.alert-btn');
 const submitBtn = document.querySelector('.submit-service');
 
-let selectedCycle = "월";
+let selectedCycle = "MONTH";
 
 
 submitBtn.onclick = async function () {

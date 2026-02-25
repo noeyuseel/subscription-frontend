@@ -115,7 +115,7 @@ signInBtn.onclick = async () => {
         });
 
         if (response.status === 201) {
-            window.location.href = "/login";
+            window.location.href = "/login.html";
         } else {
             const errorContainer = document.querySelector('.re-pw-input');
             const json = await response.json();

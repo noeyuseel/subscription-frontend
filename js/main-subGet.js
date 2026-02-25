@@ -1,6 +1,3 @@
-const subscriptionBox = document.querySelectorAll('.main-box')[1];
-const subscriptionList = document.querySelector('.sub-box2');
-
 function refreshTotal() {
     const priceElement = document.querySelectorAll('.service-price');
     let totalPrice = 0;
@@ -15,7 +12,43 @@ function refreshTotal() {
     totalDisplay.innerHTML = totalPrice.toLocaleString() + "원";
 }
 
+
+function renderSubscriptionItems(result, targetBox) {
+    const resultList = result.map(item => {
+        let name = item.name;
+        let cycle = getCycle(item.paymentCycle, item.cycleInterval);
+        let dday = new Date(item.dday);
+        let day = dday.getDate();
+        let price = item.price;
+        let id = item.id;
+        let category = item.category;
+        let interval = item.cycleInterval;
+        let savedDday = item.dday;
+        let alarms = item.alarm;
+
+        return `
+            <li class="sub-list">
+                <p class="hidden savedId">${id}</p>
+                <p class="hidden savedCategory">${category}</p>
+                <img class="mini-icon"></img>
+                <p class="service-name">${name}</p>
+                <p class="pay-date">${cycle} ${day}일마다</p>
+                <p class="hidden savedInterval">${interval}</p>
+                <p class="service-price">${Number(price).toLocaleString()}원</p>
+                <p class="hidden savedDday">${savedDday}</p>
+                <p class="hidden savedAlarms">${alarms}</p>
+                <button class="pencil"><img class="pencilImg" src="/images/pencil.png"></button>
+                <button class="delete-btn">X</button>
+            </li>
+        `
+    }).join("");
+
+    targetBox.insertAdjacentHTML('beforeend', resultList);
+};
+
+
 document.addEventListener('DOMContentLoaded', async function () {
+    const subscriptionList = document.querySelector('.sub-box2');
     refreshTotal(); // 페이지 로드 시 총액 계산 실행
     let token = localStorage.getItem('access');
     const param =
@@ -31,7 +64,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     if (subGetResponse.status === 401) {
         let tokenReissue = await fetch(`${url}/api/auth/reissue`, {
-            method: "POST"
+            method: "POST",
+            credentials: "include"
         });
         if (tokenReissue.status === 401) {
             window.location.href = "/login";
@@ -48,25 +82,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const noSub = `<p>구독 정보가 없습니다.</p>`
                 subscriptionList.insertAdjacentHTML('beforeend', noSub);
             } else {
-                const resultList = requestResult.data.content.map(item => {
-                    let name = item.name;
-                    let cycle = getCycle(item.paymentCycle, item.cycleInterval);
-                    let dday = new Date(item.dday);
-                    let day = dday.getDate();
-                    let price = item.price;
-
-                    return `
-                        <li class="sub-box2">
-                            <img class="mini-icon"></img>
-                            <p class="service-name">${name}</p>
-                            <p class="pay-date">${cycle} ${day}일마다</p>
-                            <p class="service-price">${Number(price).toLocaleString()}원</p>
-                            <button class="delete-btn">X</button>
-                        </li>
-                        `
-                }).join("");
-
-                subscriptionList.insertAdjacentHTML('beforeend', resultList);
+                renderSubscriptionItems(requestResult.data.content, subscriptionList);
             }
 
         }
@@ -77,25 +93,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             const noSub = `<p>구독 정보가 없습니다.</p>`
             subscriptionList.insertAdjacentHTML('beforeend', noSub);
         } else {
-            const resultList = result.data.content.map(item => {
-                let name = item.name;
-                let cycle = getCycle(item.paymentCycle, item.cycleInterval);
-                let dday = new Date(item.dday);
-                let day = dday.getDate();
-                let price = item.price;
-
-                return `
-                    <li class="sub-box2">
-                        <img class="mini-icon"></img>
-                        <p class="service-name">${name}</p>
-                        <p class="pay-date">${cycle} ${day}일마다</p>
-                        <p class="service-price">${Number(price).toLocaleString()}원</p>
-                        <button class="delete-btn">X</button>
-                    </li>
-                    `
-            }).join("");
-
-            subscriptionList.insertAdjacentHTML('beforeend', resultList);
+            renderSubscriptionItems(result.data.content, subscriptionList);
         }
     } else if (subGetResponse.status === 404) {
         console.log("유저를 찾을 수 없습니다.");
@@ -116,52 +114,3 @@ function getCycle(paymentCycle, interval) {
     }
     return result;
 }
-
-subscriptionBox.onclick = function (event) {
-    if (event.target.classList.contains('delete-btn')) {
-        const targetBox = event.target.closest('.sub-box2');
-        targetBox.remove();
-        refreshTotal();
-
-        const deleteResponse = async function () {
-            await fetch(`${url}/api/subscription`, {
-                method: "DELETE"
-            });
-            if (deleteResponse.status === 204) {
-                console.log("구독 정보 삭제 성공");
-            } else { console.log("구독 정보를 찾을 수 없습니다.") }
-        }
-        const response = async function () {
-            const params = {
-                "page": 0,
-                "size": 1,
-                "sort": [
-                    "string"
-                ]
-            };
-            const queryString = params.toString();
-            await fetch(`${url}/api/subscription?${queryString}`, {
-                method: "GET",
-                headers: { 'Content-Type': 'application/json' }
-            });
-
-            if (response.status === 200) {
-                const newBoxHtml = `
-                    <li class="sub-box2">
-                        <img class="mini-icon"></img>
-                        <p class="service-name">${name}</p>
-                        <p class="pay-date">매${cycle} ${date}일</p>
-                        <p class="service-price">${Number(price).toLocaleString()}원</p>
-                        <button class="delete-btn">X</button>
-                    </li>
-                    `
-                const subListBox = document.querySelectorAll('.sub-box2');
-                subListBox.insertAdjacentHTML('beforeend', newBoxHtml);
-            } else if (response.status === 404) {
-                console.log("유저를 찾을 수 없습니다.");
-            }
-        }
-    }
-};
-
-

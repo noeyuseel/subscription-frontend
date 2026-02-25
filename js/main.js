@@ -1,9 +1,17 @@
+
+// 서버 도메인
 let url = "https://구독관리서비스.site";
-let logoutBtn = document.querySelector('.logout-btn');
-logoutBtn.onclick = function () {
-    const check = confirm('정말 로그아웃하시겠씁니까?');
-    if (check) {
-        alert("로그아웃 되었씁니다^^ 감사합니당 또 오세요");
-        window.location.href = "/login";
-    }
-};
+
+// 모달창
+const modal = document.querySelector('#add-modal');
+const inputName = document.querySelector('#add-modal input[type="text"]');
+const inputDate = document.querySelector('#add-modal input[type="date"]');
+const inputPrice = document.querySelector('#add-modal input[type="number"]');
+const cycleNumber = document.querySelector('.input-cycle');
+const submitBtn = document.querySelector('.submit-service');
+const serviceList = document.querySelector('.service-list');
+const updateStatus = modal.querySelector('.updateStatus');
+
+// 메인화면
+const addBtn = document.querySelector('.add-service-btn');
+const closeBtn = document.querySelector('.close-btn');

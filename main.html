@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <div class="side-deco left">TRACK YOUR LIFE</div>
+    <div class="side-deco right">SMART SUBSCRIPTION</div>
     <div id="app">
         <div class="head">
             <h1 class="head-title">구독관리서비스<span>.site</span></h1>
@@ -23,17 +25,11 @@
             <p class="sub-title1">다가오는 결제</p>
             <ul class="sub-box1" id="upcoming-list">
 
-                <li class="sub-item">
-                    <!-- <p class="badge red">D-</p>
-                    <p>넷플릭스</p>
-                    <p>17,000원</p> -->
-                </li>
-
             </ul>
         </div>
         <div class="main-box">
             <p class="sub-title1">나의 구독 서비스</p>
-            <ul class="sub-box2">
+            <ul class="sub-box2 subListContainer">
 
             </ul>
         </div>
@@ -43,6 +39,8 @@
     </div>
 
     <div id="add-modal" class="hidden">
+        <p class="hidden updateStatus">false</p>
+        <p class="hidden subId"></p>
         <div class="modal-content">
             <div class="head">
                 <h1 class="head-title">Add</h1>
@@ -57,15 +55,15 @@
             <div class="add-container">
                 <p class="sub-title1">서비스 선택</p>
                 <div class="service-list">
-                    <div class="service-item">Netflix</div>
-                    <div class="service-item">YouTube Premium</div>
-                    <div class="service-item">Disney+</div>
-                    <div class="service-item">TVING</div>
-                    <div class="service-item">쿠팡 와우</div>
-                    <div class="service-item">네이버 플러스</div>
-                    <div class="service-item">Melon</div>
-                    <div class="service-item">Spotify</div>
-                    <div class="service-item">기타</div>
+                    <button class="service-item">Netflix</button>
+                    <button class="service-item">YouTube Premium</button>
+                    <button class="service-item">Disney+</button>
+                    <button class="service-item">TVING</button>
+                    <button class="service-item">쿠팡 와우</button>
+                    <button class="service-item">네이버 플러스</button>
+                    <button class="service-item">Melon</button>
+                    <button class="service-item">Spotify</button>
+                    <button class="service-item">기타</button>
                 </div>
             </div>
             <div class="add-container">
@@ -76,10 +74,10 @@
             </div>
             <div class="add-container">
                 <p class="sub-title1">결제 주기</p>
-                <div class="input-box">
-                    <button class="btn-space cycle-btn active">달마다</button>
+                <div class="input-box cycle-list">
+                    <button class="btn-space cycle-btn">달마다</button>
                     <button class="btn-space cycle-btn">년마다</button>
-                    <input type="number" class="input-cycle" placeholder="주기를 입력하세요 (2달마다)">
+                    <input type="number" class="input-cycle" placeholder="주기를 정수로 입력하세요 (ex: 2 = 2달마다)">
                 </div>
             </div>
             <div class="add-container">
@@ -92,7 +90,7 @@
                 <p class="sub-title1">알림</p>
                 <div class="input-box-scroll">
                     <button class="btn-space alert-btn">알람 없음</button>
-                    <button class="btn-space alert-btn active">1일 전</button>
+                    <button class="btn-space alert-btn">1일 전</button>
                     <button class="btn-space alert-btn">2일 전</button>
                     <button class="btn-space alert-btn">3일 전</button>
                     <button class="btn-space alert-btn">4일 전</button>
@@ -102,9 +100,13 @@
             <button class="submit-service">등록하기</button>
         </div>
     </div>
-    <footer>
-        <a href="/privacy.html">개인정보처리방침</a> |
-        <a href="/terms.html">서비스 이용약관</a>
+    <footer class="footer-container">
+        <div class="footer-links">
+            <a href="/privacy.html">개인정보처리방침</a>
+            <span class="divider">|</span>
+            <a href="/terms.html">서비스 이용약관</a>
+        </div>
+        <p class="copyright">© 구독관리서비스.site · All rights reserved</p>
     </footer>
 </body>
 <script src="js/main.js"></script>

@@ -198,10 +198,13 @@ input:focus {
 .social-login img {
     width: 40px;
     height: 40px;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 .google,
-.naver {
+.naver,
+.kakao {
     background: #fff;
     border: none;
     display: flex;
@@ -210,6 +213,7 @@ input:focus {
     cursor: pointer;
     transition: transform 0.2s;
     padding: none;
+    display: flex;
 }
 
 .social-login button:hover {

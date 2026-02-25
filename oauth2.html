@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const param = new URLSearchParams(window.location.search);
+        const code = param.get('code');
+        const response = await fetch(`${url}/api/auth/oauth2/login`, {
+            method: "POST",
+            headers: { "'Content-Type": "application/json" },
+            body: JSON.stringify({
+                "code": code
+            })
+        });
+        if (response.status === 200) {
+            const responseJson = await response.json();
+            localStorage.setItem('access', responseJson.data.accessToken);
+        }
+        window.location.href = "/";
+    })
+</script>
+
+</html>

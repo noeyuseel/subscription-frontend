@@ -39,3 +39,7 @@ naver.onclick = function () {
     window.location.href = "/oauth2/authorization/naver";
 };
 
+kakao.onclick = function () {
+    window.location.href = "/oauth2/authorization/kakao";
+};
+

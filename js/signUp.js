@@ -33,6 +33,7 @@ verifyEmail.onclick = async function () {
         emailInput.focus();
         return;
     };
+    verifyEmailBtn.innerText = "다시 보내기";
     const currentEmail = emailInput.value;
     try {
         await fetch(`${url}/api/auth/email/request-code`, {
@@ -47,9 +48,7 @@ verifyEmail.onclick = async function () {
         const emailWrapper = document.querySelector('.email-wrapper');
         const oldMsg = emailWrapper.querySelector('.email-code-alert');
         if (oldMsg) oldMsg.remove();
-        emailWrapper.insertAdjacentHTML('beforeend', emailMsg);
-        verifyEmailBtn.innerText
-            = "다시 보내기";
+        emailWrapper.insertAdjacentHTML('afterend', emailMsg);
     } catch (err) {
         console.error("이메일 전송 실패", err);
     }
@@ -73,7 +72,7 @@ verifyCodeInput.oninput = async function () {
 
         if (response.status === 400) {
             codeError.classList.remove('hidden');
-            codeError.querySelector('span').innerText = "코드가 일치하지 않습니다.";
+            codeError.querySelector('p').innerText = "코드가 일치하지 않습니다.";
         } else if (response.status === 410) {
             codeError.classList.remove('hidden');
             codeError.querySelector('span').innerText = "인증 코드가 만료되었습니다.";

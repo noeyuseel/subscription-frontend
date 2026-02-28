@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>구독 통합 관리 서비스</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main-layout.css">
+    <link rel="stylesheet" href="css/main-cards.css">
+    <link rel="stylesheet" href="css/main-list.css">
+    <link rel="stylesheet" href="css/main-tools.css">
+    <link rel="stylesheet" href="css/main-modal.css">
+    <link rel="stylesheet" href="css/main-footer.css">
+    <link rel="stylesheet" href="css/main-responsive.css">
     <link rel="icon" href="logo.png" type="image/png">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
@@ -13,29 +20,162 @@
 <body>
     <div class="side-deco left">TRACK YOUR LIFE</div>
     <div class="side-deco right">SMART SUBSCRIPTION</div>
+
     <div id="app">
         <div class="head">
             <h1 class="head-title">구독관리서비스<span>.site</span></h1>
             <button class="logout-btn">로그아웃</button>
         </div>
-        <div class="total-money-container">
-            <p class="total-money-title">이번 달 총 결제 예정 금액</p>
-            <h3 class="total-money">000원</h3>
-        </div>
-        <div class="main-box">
-            <p class="sub-title1">다가오는 결제</p>
-            <ul class="sub-box1" id="upcoming-list">
 
-            </ul>
-        </div>
-        <div class="main-box">
-            <p class="sub-title1">나의 구독 서비스</p>
-            <ul class="sub-box2 subListContainer">
+        <div class="dashboard-grid">
+            <!-- 왼쪽 컬럼 -->
+            <div class="dashboard-left">
+                <div class="total-money-container">
+                    <div class="total-money-inner">
+                        <div class="total-money-texts">
+                            <p class="total-money-title">이번 달 총 결제 예정 금액</p>
+                            <h3 class="total-money">000원</h3>
 
-            </ul>
-        </div>
-        <div class="add-service-btn">
-            <button id="open-modal-btn">서비스 등록</button>
+                            <p class="total-money-trend">
+                                <span class="trend-dot">▲</span>
+                                지난달 대비 <span class="trend-value">+0%</span>
+                            </p>
+                        </div>
+
+                        <div class="total-money-chart" aria-hidden="true">
+                            <div class="chart-bars">
+                                <span class="bar bar-1"></span>
+                                <span class="bar bar-2"></span>
+                                <span class="bar bar-3"></span>
+                                <span class="bar bar-4"></span>
+                            </div>
+                            <div class="chart-labels">
+                                <span>1주</span>
+                                <span>2주</span>
+                                <span>3주</span>
+                                <span>4주</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weekly-summary-card">
+                    <div class="weekly-summary-left">
+                        <span class="weekly-summary-icon">🔔</span>
+                        <p class="weekly-summary-text">이번 주 결제 <span class="weekly-summary-count">0건</span> 있음</p>
+                    </div>
+                    <button class="weekly-summary-more" type="button" aria-label="이번 주 결제 더보기">›</button>
+                </div>
+
+                <div class="main-box">
+                    <div class="section-title-row">
+                        <p class="sub-title1">다가오는 결제</p>
+
+                        <div class="service-alert-chip hidden">
+                            <span class="service-alert-icon">🔔</span>
+                            <span class="service-alert-text">이번 주 결제 과다</span>
+                        </div>
+                    </div>
+
+                    <ul class="sub-box1" id="upcoming-list">
+                    </ul>
+
+                    <div class="pagination-wrap upcoming-pagination">
+                        <button class="page-btn prev hidden" type="button">‹</button>
+                        <div class="page-numbers">
+                            <button class="page-number active" type="button">1</button>
+                            <button class="page-number hidden" type="button">2</button>
+                            <button class="page-number hidden" type="button">3</button>
+                        </div>
+                        <button class="page-btn next hidden" type="button">›</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽 컬럼 -->
+            <div class="dashboard-right">
+                <div class="main-box">
+                    <div class="section-title-row my-service-header-row">
+                        <p class="sub-title1">나의 구독 서비스</p>
+
+                        <div class="my-service-tools">
+                            <div class="my-service-search-box">
+                                <span class="my-service-search-icon">🔍</span>
+                                <input id="subscription-search-input" class="my-service-search-input" type="text"
+                                    placeholder="이름 검색">
+                                <button class="my-service-search-clear" type="button" aria-label="검색어 지우기">×</button>
+                            </div>
+
+                            <button id="sort-open-btn" class="sort-open-btn" type="button" aria-label="정렬 옵션 열기">
+                                <span class="sort-open-btn-icon">↕</span>
+                                <span class="sort-open-btn-text">정렬</span>
+                            </button>
+                            <div id="sort-dropdown-menu" class="sort-dropdown-menu ">
+                                <button class="sort-option active" type="button" data-sort="name" data-order="asc">
+                                    <span class="sort-option-main">
+                                        <span class="sort-option-key">이름</span>
+                                        <span class="sort-option-arrow">▲</span>
+                                    </span>
+                                </button>
+
+                                <button class="sort-option" type="button" data-sort="name" data-order="desc">
+                                    <span class="sort-option-main">
+                                        <span class="sort-option-key">이름</span>
+                                        <span class="sort-option-arrow">▼</span>
+                                    </span>
+                                </button>
+
+                                <button class="sort-option" type="button" data-sort="price" data-order="asc">
+                                    <span class="sort-option-main">
+                                        <span class="sort-option-key">가격</span>
+                                        <span class="sort-option-arrow">▲</span>
+                                    </span>
+                                </button>
+
+                                <button class="sort-option" type="button" data-sort="price" data-order="desc">
+                                    <span class="sort-option-main">
+                                        <span class="sort-option-key">가격</span>
+                                        <span class="sort-option-arrow">▼</span>
+                                    </span>
+                                </button>
+
+                                <button class="sort-option" type="button" data-sort="payDate" data-order="asc">
+                                    <span class="sort-option-main">
+                                        <span class="sort-option-key">결제일</span>
+                                        <span class="sort-option-arrow">▲</span>
+                                    </span>
+                                </button>
+
+                                <button class="sort-option" type="button" data-sort="payDate" data-order="desc">
+                                    <span class="sort-option-main">
+                                        <span class="sort-option-key">결제일</span>
+                                        <span class="sort-option-arrow">▼</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="sub-box2 subListContainer">
+                    </ul>
+
+                    <div class="pagination-wrap mysub-pagination">
+                        <button class="page-btn prev hidden" type="button" id="prev">‹</button>
+                        <div class="page-numbers">
+                            <button class="page-number active" id="1" type="button">1</button>
+                            <button class="page-number hidden" id="2" type="button">2</button>
+                            <button class="page-number hidden" id="3" type="button">3</button>
+                            <button class="page-number hidden" id="4" type="button">4</button>
+                            <button class="page-number hidden" id="5" type="button">5</button>
+                        </div>
+                        <button class="page-btn next hidden" type="button" id="next">›</button>
+                    </div>
+                </div>
+
+                <div class="add-service-btn">
+                    <button id="open-modal-btn">서비스 등록</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -101,6 +241,7 @@
             <button class="submit-service">등록하기</button>
         </div>
     </div>
+
     <footer class="footer-container">
         <div class="footer-links">
             <a href="/privacy.html">개인정보처리방침</a>
@@ -110,6 +251,7 @@
         <p class="copyright">© 구독관리서비스.site · All rights reserved</p>
     </footer>
 </body>
+
 <script src="js/main.js"></script>
 <script src="js/main-subDelete.js"></script>
 <script src="js/main-subGet.js"></script>

@@ -19,6 +19,7 @@ subList.addEventListener('click', e => {
         categoryList.forEach(category => {
             if (category.innerText == savedCategory) {
                 category.classList.add('active');
+                activeService = category;
             } else {
                 category.classList.remove('active');
             }
@@ -31,10 +32,17 @@ subList.addEventListener('click', e => {
         const cycleList = document.querySelectorAll('.cycle-list .cycle-btn');
         cycleList.forEach(cycleActive => {
             if (savedCycle) {
-                if (cycleActive.innerText === "달마다") {
-                    cycleActive.classList.remove('active');
-                } else if (cycleActive.innerText === "년마다") {
+
+                if (cycleActive.innerText === "년마다") {
                     cycleActive.classList.add('active');
+                } else {
+                    cycleActive.classList.remove('active');
+                }
+            } else {
+                if (cycleActive.innerText === "달마다") {
+                    cycleActive.classList.add('active');
+                } else {
+                    cycleActive.classList.remove('active');
                 }
             }
         });

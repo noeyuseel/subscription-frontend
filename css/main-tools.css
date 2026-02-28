@@ -1,0 +1,344 @@
+/* =========================
+   My Service Header Tools
+   (나의 구독 서비스 헤더 우측 검색 + 정렬)
+========================= */
+
+.my-service-header-row {
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.my-service-tools {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.my-service-search-box {
+    height: 34px;
+    min-width: 180px;
+    max-width: 240px;
+    border: 1px solid #e7ebef;
+    background: #fff;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 8px 0 10px;
+    transition: all 0.18s ease;
+}
+
+.my-service-search-box:focus-within {
+    border-color: #d8e8c9;
+    box-shadow: 0 0 0 4px rgba(176, 209, 148, 0.10);
+}
+
+.my-service-search-icon {
+    font-size: 12px;
+    opacity: 0.75;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.my-service-search-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 12px;
+    color: #222;
+    padding: 0;
+    line-height: 1;
+}
+
+.my-service-search-input::placeholder {
+    color: #a0a8b2;
+}
+
+.my-service-search-clear {
+    width: 18px;
+    height: 18px;
+    border: none;
+    background: #f2f4f6;
+    color: #8e98a3;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    transition: all 0.18s ease;
+}
+
+.my-service-search-clear:hover {
+    background: #e9edf1;
+    color: #5f6b78;
+}
+
+.sort-open-btn {
+    height: 34px;
+    border: 1px solid #e7ebef;
+    background: #fff;
+    color: #5f6b78;
+    border-radius: 999px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.sort-open-btn:hover {
+    background: #f7f9fb;
+    border-color: #dfe5ea;
+    color: #374151;
+}
+
+.sort-open-btn-icon {
+    font-size: 12px;
+    line-height: 1;
+}
+
+.sort-open-btn-text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+/* =========================
+   Add Service Button
+========================= */
+
+.add-service-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 440px;
+    z-index: 100;
+}
+
+.add-service-btn button {
+    width: 100%;
+    height: 64px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-service-btn button:hover {
+    transform: translateY(-1px);
+}
+
+/* 데스크탑에선 오른쪽 카드 아래 */
+.dashboard-right .add-service-btn {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    z-index: auto;
+    margin-top: 4px;
+}
+
+.dashboard-right .add-service-btn button {
+    height: 64px;
+    border-radius: 18px;
+    font-size: 20px;
+    font-weight: 800;
+    background: linear-gradient(180deg, #171717 0%, #0d0d0d 100%);
+    box-shadow: 0 12px 28px rgba(17, 17, 17, 0.18);
+}
+
+/* =========================
+   Common Utility
+========================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   Pagination UI
+========================= */
+
+.pagination-wrap {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f3f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.page-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e7ebef;
+    background: #fff;
+    color: #7f8893;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    padding: 0;
+}
+
+.page-btn:hover {
+    background: #f7f9fb;
+    color: #4b5563;
+    border-color: #dfe5ea;
+}
+
+.page-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: #fafbfc;
+}
+
+.page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.page-number {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    border: 1px solid #e7ebef;
+    background: #fff;
+    color: #6b7280;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.page-number:hover {
+    background: #f7f9fb;
+    color: #374151;
+    border-color: #dfe5ea;
+}
+
+.page-number.active {
+    background: #eef6e7;
+    border-color: #d8e8c9;
+    color: #6d9250;
+    box-shadow: 0 2px 8px rgba(176, 209, 148, 0.18);
+}
+
+/* 카드별로 조금 다르게 주고 싶으면 이 클래스 활용 가능 */
+.upcoming-pagination .page-number.active {
+    background: #fff6f4;
+    border-color: #ffe4de;
+    color: #c95c45;
+    box-shadow: 0 2px 8px rgba(201, 92, 69, 0.10);
+}
+
+.mysub-pagination .page-number.active {
+    background: #eef6e7;
+    border-color: #d8e8c9;
+    color: #6d9250;
+
+}
+
+/* =========================
+   Sort Dropdown
+========================= */
+
+.sort-dropdown-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.sort-dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 132px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #e7ebef;
+    border-radius: 16px;
+    box-shadow: 0 14px 32px rgba(17, 24, 39, 0.10);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 300;
+}
+
+.sort-option {
+    width: 100%;
+    height: 36px;
+    border: none;
+    background: transparent;
+    border-radius: 12px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    color: #4b5563;
+}
+
+.sort-option:hover {
+    background: #f7f9fb;
+    color: #1f2937;
+}
+
+.sort-option.active {
+    background: #eef6e7;
+    color: #6d9250;
+}
+
+.sort-option-main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.sort-option-key {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.sort-option-arrow {
+    font-size: 10px;
+    line-height: 1;
+    opacity: 0.8;
+    transform: translateY(-1px);
+}

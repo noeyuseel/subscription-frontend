@@ -1,0 +1,338 @@
+.sub-box1 {
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+    border: 1px solid #f1f3f5;
+    min-height: 80px;
+    box-sizing: border-box;
+}
+
+.sub-box2 {
+    background: #fff;
+    padding: 8px 14px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    height: 0px;
+    margin-bottom: 0;
+    box-shadow: none;
+    border: 1px solid #f1f3f5;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    min-height: 100px;
+}
+
+.subListContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+/* =========================
+   Upcoming Payment Items (sub-item)
+   왼쪽 D-day+이름 / 오른쪽 가격+날짜
+========================= */
+
+.sub-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    gap: 12px;
+    padding: 14px 4px;
+    border-bottom: 1px solid #f3f5f7;
+    box-sizing: border-box;
+}
+
+.sub-item:last-child {
+    border-bottom: none;
+}
+
+.sub-item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+}
+
+.sub-item-left .badge {
+    flex-shrink: 0;
+}
+
+.due-name {
+    margin: 0;
+    font-weight: 700;
+    color: #222;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sub-item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+.due-price {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: #1f2328;
+    line-height: 1;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.due-date {
+    margin: 0;
+    font-size: 12px;
+    color: #8b95a1;
+    line-height: 1;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.no-alert-subscription {
+    font-size: 15px;
+    width: 100%;
+    text-align: left;
+    color: #6b7280;
+    margin: 8px 2px;
+}
+
+/* 기존 nth-child 기반 스타일 무력화 */
+.sub-item p:nth-child(2),
+.sub-item p:nth-child(3),
+.sub-item p:last-child {
+    flex: unset;
+    width: auto;
+    min-width: 0;
+    margin-left: 0;
+    text-align: inherit;
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    flex-shrink: 0;
+}
+
+.badge.red {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+}
+
+.badge.orange {
+    background-color: #ffa502;
+}
+
+.badge.green {
+    background-color: #2ed573;
+}
+
+/* =========================
+   Subscription Service List (sub-list)
+   오른쪽 위 가격 / 아래 날짜+수정삭제
+========================= */
+
+.sub-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    width: 100%;
+    gap: 12px;
+    padding: 14px 4px;
+    border-bottom: 1px solid #f3f5f7;
+    box-sizing: border-box;
+}
+
+.sub-list:last-child {
+    border-bottom: none;
+}
+
+.sub-box2 p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.sub-list-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+}
+
+.sub-list-left .service-name {
+    flex: 1;
+    min-width: 0;
+}
+
+.sub-list-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.sub-list-bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sub-list-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.sub-list-actions .pencil,
+.sub-list-actions .delete-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 8px;
+    background: #f6f7f9;
+}
+
+.sub-list-actions .pencil {
+    border: 1px solid #eceff2;
+}
+
+.sub-list-actions .delete-btn {
+    border: 1px solid #ffe2e2;
+    color: #ff4d4d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sub-list-actions .pencil:hover,
+.sub-list-actions .delete-btn:hover {
+    filter: brightness(0.97);
+}
+
+.mini-icon {
+    width: 46px;
+    height: 46px;
+    background: #f8f9fa;
+    border-radius: 14px;
+    border: 1px solid #f0f2f4;
+    flex-shrink: 0;
+}
+
+.service-name {
+    flex: 1;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.service-info {
+    text-align: right;
+}
+
+.pay-date {
+    font-size: 12px;
+    color: #9aa1a9;
+    margin-bottom: 0;
+    min-width: 92px;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.sub-list-bottom .pay-date {
+    margin: 0;
+    font-size: 12px;
+    color: #9aa1a9;
+    line-height: 1;
+    min-width: auto;
+    white-space: nowrap;
+    justify-content: flex-end;
+}
+
+.service-price {
+    font-size: 16px;
+    font-weight: 800;
+    min-width: 76px;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.sub-list-right .service-price {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #1f2328;
+    line-height: 1;
+    text-align: right;
+    justify-content: flex-end;
+    min-width: auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.pencil {
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.pencilImg {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.delete-btn {
+    border: none;
+    background: none;
+    color: #ff4d4d;
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+}

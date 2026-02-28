@@ -17,6 +17,7 @@ addBtn.onclick = function () {
     initCycle.forEach(item => {
         item.classList.remove('active');
     });
+    cycleNumber.value = "";
     inputDate.value = "";
     const initAlarms = document.querySelectorAll('.alert-btn');
     initAlarms.forEach(item => {

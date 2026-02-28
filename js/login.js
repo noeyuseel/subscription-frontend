@@ -5,6 +5,7 @@ let loginIdInput = document.querySelector('.id-input');
 let loginPwInput = document.querySelector('.pw-input');
 let google = document.querySelector('.google');
 let naver = document.querySelector('.naver');
+let kakao = document.querySelector('.kakao');
 loginBtn.onclick = async () => {
     const idInput = loginIdInput.value;
     const pwInput = loginPwInput.value;

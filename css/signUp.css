@@ -1,4 +1,3 @@
-/* --- 공통 배경 및 여백 장식 --- */
 body {
     background-color: #f4f6f8;
     margin: 0;
@@ -11,7 +10,6 @@ body {
     align-items: center;
 }
 
-/* 배경 블러 원 (왼쪽 상단) */
 body::before {
     content: '';
     position: fixed;
@@ -24,7 +22,6 @@ body::before {
     z-index: -1;
 }
 
-/* 배경 블러 원 (오른쪽 하단) */
 body::after {
     content: '';
     position: fixed;
@@ -37,7 +34,6 @@ body::after {
     z-index: -1;
 }
 
-/* 사이드 텍스트 장식 (PC 전용) */
 .side-deco {
     position: fixed;
     top: 50%;
@@ -49,7 +45,6 @@ body::after {
     writing-mode: vertical-rl;
     opacity: 0.6;
     pointer-events: none;
-    /* 클릭 방해 금지 */
 }
 
 .side-deco.left {
@@ -67,7 +62,6 @@ body::after {
     }
 }
 
-/* 중앙 컨테이너 박스 (로그인/회원가입 전용) */
 .app {
     background-color: #ffffff;
     padding: 45px 35px;
@@ -81,7 +75,6 @@ body::after {
     text-align: center;
 }
 
-/* 제목 */
 .main-title {
     font-size: 28px;
     font-weight: 800;
@@ -90,7 +83,6 @@ body::after {
     letter-spacing: -1px;
 }
 
-/* 입력창 (로그인과 높이/스타일 통일) */
 input {
     width: 100%;
     height: 48px;
@@ -120,30 +112,17 @@ input:focus {
 .email-input,
 .verify-code {
     flex: 3;
-    /* 입력창이 더 넓게 */
     margin-bottom: 0;
 }
 
 .verify-email,
 .code-check {
     flex: 1;
-    /* 버튼은 작게 */
     white-space: nowrap;
     background-color: #eee;
     border: none;
     border-radius: 8px;
     font-size: 14px;
-}
-
-
-/* 비밀번호 불일치 경고문 */
-.re-pw-alert,
-.code-error span {
-    font-size: 13px;
-    color: #ff4d4f;
-    /* 세련된 레드톤 */
-    text-align: left;
-    margin: -8px 0 12px 4px;
 }
 
 .re-code {
@@ -158,7 +137,6 @@ input:focus {
     display: none;
 }
 
-/* 로그인하러 가기 문구 */
 .toLink {
     font-size: 14px;
     color: #666;
@@ -172,7 +150,6 @@ input:focus {
     border-bottom: 1px solid #333;
 }
 
-/* 확인 버튼 (로그인 버튼과 동일한 블랙) */
 .sign-in-btn {
     width: 100%;
     height: 52px;
@@ -189,13 +166,29 @@ input:focus {
 
 .sign-in-btn:hover {
     background-color: #b0d194;
-    /* 살짝 밝아지는 효과 */
 }
 
 .success-msg,
-.email-code-alert {
-    color: blue;
+.email-code-alert,
+.re-pw-alert,
+.error-msg,
+.code-error {
     font-size: 13px;
     text-align: left;
-    margin: -8px 0 12px 4px;
+    margin: 8px 0 8px 0px;
+    width: 100%;
+}
+
+.email-code-alert {
+    color: #4A90E2;
+}
+
+.success-msg {
+    color: #2ecc71;
+}
+
+.re-pw-alert,
+.code-error,
+.error-msg {
+    color: #e74c3c;
 }

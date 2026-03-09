@@ -4,7 +4,9 @@ subListContainer.addEventListener('click', async e => {
     const savedId = subList.querySelector('.savedId').innerText;
 
     if (e.target.classList.contains('delete-btn')) {
-        confirm("해당 구독 정보를 삭제하시겠습니까?");
+        if(!confirm("해당 구독 정보를 삭제하시겠습니까?")) {
+            return;
+        }
         let token = localStorage.getItem('access');
         const param = {
             "subscriptionId": savedId

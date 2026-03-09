@@ -6,27 +6,25 @@ sortOpen.onclick = () => {
 
 let currentSort = null;
 
-sortMenu.addEventListener('click', async e => {
+sortMenu.addEventListener('click', e => {
     const target = e.target.closest('.sort-option');
     if (!target) return;
-    let currentDataSort = target.dataset.sort.toUpperCase();
-    let currentDataOrder = target.dataset.order.toUpperCase();
+
+    const isAlreadyActive = target.classList.contains('active');
+
     sortMenu.querySelectorAll('.sort-option').forEach(item => {
-        if (item === target) {
-            if (item.classList.contains('active')) {
-                item.classList.remove('active');
-                currentSort = null;
-                findName.dispatchEvent(new Event('input'));
-            } else {
-                item.classList.add('active');
-            }
-            return;
-        }
+        item.classList.remove('active');
     });
 
-    currentSort = `${currentDataSort}_${currentDataOrder}`;
+    if (isAlreadyActive) {
+        currentSort = null;
+    } else {
+        target.classList.add('active');
+        currentSort = `${target.dataset.sort.toUpperCase()}_${target.dataset.order.toUpperCase()}`;
+    }
+
     findName.dispatchEvent(new Event('input'));
-})
+});
 
 const findName = document.querySelector('.my-service-search-input');
 findName.oninput = async function () {
@@ -34,12 +32,12 @@ findName.oninput = async function () {
 
     const searchCondition = {
         "sortType": currentSort ? currentSort : "",
-        "subscriptionName": textValue
+        "subscriptionName": textValue.trim()
     };
 
     const pageable = {
         "page": 0,
-        "size": 10
+        "size": 5
     };
 
     const allParams = new URLSearchParams({

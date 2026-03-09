@@ -1,189 +1,330 @@
-
-
 /* =========================
    Modal
 ========================= */
 
 #add-modal {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    padding: 18px;
+    box-sizing: border-box;
+    background: rgba(17, 24, 39, 0.45);
+    backdrop-filter: blur(6px);
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     z-index: 2000;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
 }
 
 .modal-content {
-    background-color: #fff;
+    background: #ffffff;
     width: 100%;
-    max-width: 500px;
+    max-width: 560px;
+    max-height: 92vh;
     margin: 0 auto;
-    border-radius: 30px 30px 30px 30px;
-    padding: 30px 25px 40px 25px;
+    border-radius: 34px;
+    padding: 28px 24px 28px;
     box-sizing: border-box;
-    max-height: 98vh;
     overflow-y: auto;
-    animation: slideUp 0.4s ease-out;
+    animation: modalUp 0.28s ease-out;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-@keyframes slideUp {
+.modal-content::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes modalUp {
     from {
-        transform: translateY(100%);
+        transform: translateY(28px);
+        opacity: 0;
     }
     to {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
-.modal-content .head {
+.modal-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
 }
 
 .modal-content .head-title {
     font-size: 22px;
     font-weight: 800;
-    color: #333;
+    color: #222;
+    margin: 0;
 }
 
 .close-btn {
-    background: #f1f3f5;
     border: none;
-    padding: 8px 15px;
-    border-radius: 12px;
-    font-weight: 600;
+    background: #f3f4f6;
     color: #666;
+    height: 42px;
+    padding: 0 18px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.close-btn:hover {
+    background: #e9ecef;
 }
 
 .add-container {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
 .modal-content .sub-title1 {
     font-size: 15px;
-    font-weight: 700;
-    color: #555;
+    font-weight: 800;
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.section-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     margin-bottom: 12px;
-    margin-left: 5px;
+    flex-wrap: wrap;
+}
+
+.section-help {
+    font-size: 12px;
+    color: #9aa1a9;
+    font-weight: 600;
 }
 
 .input-box input {
     width: 100%;
-    height: 52px;
-    background-color: #f8f9fa;
-    border: 1px solid #eee;
-    border-radius: 15px;
+    height: 56px;
+    background: #f8f9fa;
+    border: 1px solid #eceff3;
+    border-radius: 18px;
     padding: 0 18px;
     font-size: 16px;
+    color: #222;
     box-sizing: border-box;
     outline: none;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
+}
+
+.input-box input::placeholder {
+    color: #a0a7b0;
 }
 
 .input-box input:focus {
     border-color: #b0d194;
-    background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(176, 209, 148, 0.1);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(176, 209, 148, 0.12);
 }
 
-.service-list,
-.add-container .input-box-scroll {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 5px 0 15px 5px;
-    gap: 10px;
-    -webkit-overflow-scrolling: touch;
-}
-
-.service-list::-webkit-scrollbar,
-.add-container .input-box-scroll::-webkit-scrollbar {
-    display: none;
-}
-
-.service-list,
-.add-container .input-box-scroll {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
+/* 서비스 선택: 가로 스크롤 제거하고 예쁜 그리드 */
 .service-list {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
-    padding: 10px 0;
     width: 100%;
 }
 
 .service-item {
-    flex: 0 0 auto !important;
-    white-space: nowrap;
-    padding: 12px 20px;
-    background-color: #f1f3f5;
-    border-radius: 20px;
-    font-size: 14px;
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 14px;
+    border: 1px solid #eceff3;
+    background: #f7f8fa;
+    color: #2d2f33;
+    border-radius: 18px;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    border: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.service-item:hover,
+.service-item:hover {
+    border-color: #dbe8cf;
+    background: #f3f8ee;
+}
+
 .service-item.active {
-    background-color: #b0d194;
+    background: linear-gradient(180deg, #b8d89c 0%, #a8cd87 100%);
+    border-color: #a8cd87;
     color: #fff;
+    box-shadow: 0 10px 18px rgba(176, 209, 148, 0.28);
+}
+
+/* 결제 주기 */
+.cycle-select-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.cycle-select-row .cycle-btn {
+    flex: 1;
+}
+
+.cycle-input-box .input-cycle {
+    margin-top: 0;
+    height: 56px;
+}
+
+/* 알림 선택: 스크롤 제거하고 그리드 */
+.input-box-scroll.alert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    overflow: visible;
 }
 
 .btn-space {
-    flex: 0 0 auto;
-    padding: 12px 20px;
-    background-color: #f1f3f5;
-    border: none;
-    border-radius: 14px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #777;
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 12px;
+    background: #f3f4f6;
+    border: 1px solid #eceff3;
+    border-radius: 18px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #6b7280;
     cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.btn-space:hover {
+    background: #eceff2;
 }
 
 .btn-space.active {
-    background-color: #333;
+    background: #222;
+    border-color: #222;
     color: #fff;
+    box-shadow: 0 10px 18px rgba(34, 34, 34, 0.18);
 }
 
-.input-cycle {
-    margin-top: 5px;
-    height: 10px;
-}
-
-.alert-btn {
-    margin-top: 5px;
+.alert-btn,
+.cycle-btn {
+    margin-top: 0;
 }
 
 .submit-service {
     width: 100%;
     height: 60px;
-    background-color: #b0d194;
-    color: white;
     border: none;
-    border-radius: 18px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #b8d89c 0%, #a8cd87 100%);
+    color: #fff;
     font-size: 18px;
     font-weight: 800;
-    margin-top: 10px;
+    margin-top: 4px;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(176, 209, 148, 0.3);
-    transition: transform 0.2s;
+    box-shadow: 0 14px 28px rgba(176, 209, 148, 0.32);
+    transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.submit-service:hover {
+    filter: brightness(0.98);
 }
 
 .submit-service:active {
-    transform: scale(0.98);
+    transform: scale(0.985);
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+    #add-modal {
+        padding: 10px;
+        align-items: flex-end;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        max-height: 96vh;
+        border-radius: 30px 30px 26px 26px;
+        padding: 24px 18px 24px;
+    }
+
+    .modal-content .head-title {
+        font-size: 20px;
+    }
+
+    .close-btn {
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 14px;
+        font-size: 14px;
+    }
+
+    .service-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .service-item {
+        min-height: 50px;
+        padding: 12px 10px;
+        font-size: 14px;
+        border-radius: 16px;
+    }
+
+    .input-box-scroll.alert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .btn-space {
+        min-height: 50px;
+        padding: 12px 10px;
+        font-size: 14px;
+        border-radius: 16px;
+    }
+
+    .cycle-select-row {
+        gap: 8px;
+    }
+
+    .input-box input,
+    .cycle-input-box .input-cycle {
+        height: 54px;
+        font-size: 15px;
+        border-radius: 16px;
+    }
+
+    .submit-service {
+        height: 58px;
+        border-radius: 18px;
+        font-size: 17px;
+    }
+}
+
+.field-error-message {
+    margin: 8px 0 0 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ef4444;
+    line-height: 1.4;
+}
+
+.field-error-target {
+    border-color: #f87171 !important;
+    box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.12) !important;
+    border-radius: 18px;
 }

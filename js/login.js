@@ -51,3 +51,18 @@ kakao.onclick = function () {
     window.location.href = "/oauth2/authorization/kakao";
 };
 
+document.addEventListener('DOMContentLoaded', async () => {
+    let tokenReissue = await fetch(`${url}/api/auth/reissue`, {
+        method: "POST",
+        credentials: "include"
+    });
+
+    if (tokenReissue.status === 200) {
+        let json = await tokenReissue.json();
+        let newToken = json.data.accessToken;
+        localStorage.setItem('access', newToken);
+        window.location.href = "/";
+    } else {
+        return;
+    }
+});

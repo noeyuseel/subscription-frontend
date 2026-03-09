@@ -164,6 +164,7 @@
     padding: 14px 4px;
     border-bottom: 1px solid #f3f5f7;
     box-sizing: border-box;
+    min-height: 78px;
 }
 
 .sub-list:last-child {
@@ -179,7 +180,7 @@
 .sub-list-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     min-width: 0;
     flex: 1;
 }
@@ -234,13 +235,29 @@
     filter: brightness(0.97);
 }
 
+/* 핵심 수정: 로고 잘림 방지 */
 .mini-icon {
+    width: 58px;
+    height: 40px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+
+/* 기타처럼 빈 칸 유지하고 싶을 때 */
+.empty-icon {
     width: 46px;
     height: 46px;
     background: #f8f9fa;
     border-radius: 14px;
     border: 1px solid #f0f2f4;
     flex-shrink: 0;
+    display: block;
 }
 
 .service-name {
@@ -296,10 +313,11 @@
     min-width: auto;
 }
 
+/* 전역 img 때문에 mini-icon이 잘리는 거 방지 */
 img {
-    width: 100%;
+    display: block;
+    max-width: 100%;
     height: auto;
-    object-fit: cover;
 }
 
 .pencil {

@@ -34,7 +34,7 @@
                     <div class="total-money-inner">
                         <div class="total-money-texts">
                             <p class="total-money-title">이번 달 총 결제 예정 금액</p>
-                            <h3 class="total-money">000원</h3>
+                            <h3 class="total-money">0원</h3>
 
                             <div class="total-money-bottom">
                                 <p class="total-money-trend">
@@ -198,63 +198,83 @@
     <div id="add-modal" class="hidden">
         <p class="hidden updateStatus">false</p>
         <p class="hidden subId"></p>
+    
         <div class="modal-content">
-            <div class="head">
+            <div class="head modal-head">
                 <h1 class="head-title">Add</h1>
-                <button class="close-btn">닫기</button>
+                <button class="close-btn" type="button">닫기</button>
             </div>
+    
             <div class="add-container">
                 <p class="sub-title1">서비스명</p>
                 <div class="input-box">
-                    <input type="text">
+                    <input type="text" placeholder="서비스명을 입력하세요">
                 </div>
             </div>
+    
             <div class="add-container">
-                <p class="sub-title1">서비스 선택</p>
+                <div class="section-label-row">
+                    <p class="sub-title1">서비스 선택</p>
+                </div>
+    
                 <div class="service-list">
-                    <button class="service-item">Netflix</button>
-                    <button class="service-item">YouTube Premium</button>
-                    <button class="service-item">Disney+</button>
-                    <button class="service-item">TVING</button>
-                    <button class="service-item">쿠팡 와우</button>
-                    <button class="service-item">네이버 플러스</button>
-                    <button class="service-item">Melon</button>
-                    <button class="service-item">Spotify</button>
-                    <button class="service-item">기타</button>
+                    <button type="button" class="service-item">Netflix</button>
+                    <button type="button" class="service-item">YouTube Premium</button>
+                    <button type="button" class="service-item">Disney+</button>
+                    <button type="button" class="service-item">TVING</button>
+                    <button type="button" class="service-item">Wavve</button>
+                    <button type="button" class="service-item">쿠팡 와우</button>
+                    <button type="button" class="service-item">Melon</button>
+                    <button type="button" class="service-item">Spotify</button>
+                    <button type="button" class="service-item">Apple Music</button>
+                    <button type="button" class="service-item">기타</button>
                 </div>
             </div>
+    
             <div class="add-container">
                 <p class="sub-title1">결제 금액</p>
                 <div class="input-box">
                     <input type="number" placeholder="0원">
                 </div>
             </div>
+    
             <div class="add-container">
                 <p class="sub-title1">결제 주기</p>
-                <div class="input-box cycle-list">
-                    <button class="btn-space cycle-btn">달마다</button>
-                    <button class="btn-space cycle-btn">년마다</button>
-                    <input type="number" class="input-cycle" placeholder="주기를 1~11사이의 정수로 입력하세요 (ex: 2 = 2달마다)">
+    
+                <div class="cycle-select-row">
+                    <button type="button" class="btn-space cycle-btn">달마다</button>
+                    <button type="button" class="btn-space cycle-btn">년마다</button>
+                </div>
+    
+                <div class="input-box cycle-input-box">
+                    <input type="number" class="input-cycle" placeholder="주기를 1~11 사이의 정수로 입력하세요 (ex: 2 = 2달마다)">
                 </div>
             </div>
+    
             <div class="add-container">
                 <p class="sub-title1">결제일</p>
                 <div class="input-box">
                     <input type="date">
                 </div>
             </div>
+    
             <div class="add-container">
-                <p class="sub-title1">알림</p>
-                <div class="input-box-scroll">
-                    <button class="btn-space alert-btn">알람 없음</button>
-                    <button class="btn-space alert-btn">1일 전</button>
-                    <button class="btn-space alert-btn">2일 전</button>
-                    <button class="btn-space alert-btn">3일 전</button>
-                    <button class="btn-space alert-btn">4일 전</button>
-                    <button class="btn-space alert-btn">5일 전</button>
+                <div class="section-label-row">
+                    <p class="sub-title1">알림</p>
+                    <span class="section-help">가입할 때 설정한 이메일로 알람이 발송됩니다!</span>
+                </div>
+    
+                <div class="input-box-scroll alert-grid">
+                    <button type="button" class="btn-space alert-btn">알람 없음</button>
+                    <button type="button" class="btn-space alert-btn">1일 전</button>
+                    <button type="button" class="btn-space alert-btn">2일 전</button>
+                    <button type="button" class="btn-space alert-btn">3일 전</button>
+                    <button type="button" class="btn-space alert-btn">4일 전</button>
+                    <button type="button" class="btn-space alert-btn">5일 전</button>
                 </div>
             </div>
-            <button class="submit-service">등록하기</button>
+    
+            <button class="submit-service" type="button">등록하기</button>
         </div>
     </div>
 

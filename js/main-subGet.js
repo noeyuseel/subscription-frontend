@@ -18,7 +18,7 @@ function renderSubscriptionItems(result, targetBox) {
             <p class="hidden savedCategory">${category}</p>
     
             <div class="sub-list-left">
-                <img class="mini-icon"></img>
+                <img class="mini-icon" src="${getServiceLogoPath(name)}">
                 <p class="service-name">${name}</p>
             </div>
     
@@ -45,6 +45,22 @@ function renderSubscriptionItems(result, targetBox) {
     targetBox.insertAdjacentHTML('beforeend', resultList);
 };
 
+function getServiceLogoPath(name) {
+    const logoMap = {
+        "Netflix": "/images/logo/netflix.png",
+        "YouTube Premium": "/images/logo/youtube-premium.png",
+        "Disney+": "/images/logo/disney-plus.png",
+        "TVING": "/images/logo/tving.png",
+        "Wavve": "/images/logo/wavve.png",
+        "쿠팡 와우": "/images/logo/coupang-wow.png",
+        "Melon": "/images/logo/melon.png",
+        "Spotify": "/images/logo/spotify.png",
+        "Apple Music": "/images/logo/apple-music.png",
+        
+    };
+
+    return logoMap[name] || "/images/logo/other.png";
+}
 
 
 const subscriptionList = document.querySelector('.sub-box2.subListContainer');

@@ -1,5 +1,3 @@
-
-
 const idInput = document.querySelector('.id-input');
 const emailInput = document.querySelector('.email-input');
 const pwInput = document.querySelector('.pw-input');
@@ -33,7 +31,16 @@ verifyEmail.onclick = async function () {
         emailInput.focus();
         return;
     };
-    verifyEmailBtn.innerText = "다시 보내기";
+    if(verifyEmailBtn.innerText === "이메일 인증") {
+        verifyEmailBtn.innerText = "다시 보내기";
+        const emailMsg = `<p class="email-code-alert">인증 메일을 전송했어요</p>`
+        const emailWrapper = document.querySelector('.email-wrapper');
+        emailWrapper.insertAdjacentHTML('afterend', emailMsg);
+    } else {
+        const oldMsg = document.querySelector('.email-code-alert');
+        oldMsg.innerText = "인증 메일을 다시 전송했어요";
+    }
+    codeWrapper.classList.remove('hidden');
     const currentEmail = emailInput.value;
     try {
         await fetch(`${url}/api/auth/email/request-code`, {
@@ -43,12 +50,6 @@ verifyEmail.onclick = async function () {
                 "email": `${currentEmail}`
             })
         });
-        codeWrapper.classList.remove('hidden');
-        const emailMsg = `<p class="email-code-alert">인증 메일을 전송했어요</p>`
-        const emailWrapper = document.querySelector('.email-wrapper');
-        const oldMsg = emailWrapper.querySelector('.email-code-alert');
-        if (oldMsg) oldMsg.remove();
-        emailWrapper.insertAdjacentHTML('afterend', emailMsg);
     } catch (err) {
         console.error("이메일 전송 실패", err);
     }
@@ -57,30 +58,33 @@ verifyEmail.onclick = async function () {
 
 const codeError = document.querySelector('.code-error');
 const reCode = document.querySelector('.re-code');
+let success = false;
 verifyCodeInput.oninput = async function () {
     const currentCode = verifyCodeInput.value;
 
-    if (currentCode.length === 6) {
-        let response = await fetch(`${url}/api/auth/email/verify`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                "email": emailInput.value,
-                "code": currentCode
-            })
-        });
-
-        if (response.status === 400) {
-            codeError.classList.remove('hidden');
-            codeError.querySelector('p').innerText = "코드가 일치하지 않습니다.";
-        } else if (response.status === 410) {
-            codeError.classList.remove('hidden');
-            codeError.querySelector('span').innerText = "인증 코드가 만료되었습니다.";
-        } else if (response.ok) {
-            codeError.classList.add('hidden');
-            const successVerifyMsg = `<p class="success-msg">인증 완료</p>`;
-            const container = document.querySelector('.msg');
-            container.innerHTML = successVerifyMsg;
+    if(success === false) {
+        if (currentCode.length === 6) {
+            let response = await fetch(`${url}/api/auth/email/verify`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "email": emailInput.value,
+                    "code": currentCode
+                })
+            });
+            if (response.status === 400) {
+                codeError.classList.remove('hidden');
+                codeError.querySelector('p').innerText = "인증 코드가 일치하지 않습니다.";
+            } else if (response.status === 410) {
+                codeError.classList.remove('hidden');
+                codeError.querySelector('p').innerText = "인증 코드가 만료되었습니다.";
+            } else if (response.ok) {
+                codeError.classList.add('hidden');
+                const successVerifyMsg = `<p class="success-msg">인증 완료</p>`;
+                const container = document.querySelector('.msg');
+                container.innerHTML = successVerifyMsg;
+                success = true;
+            }
         }
     }
 };
@@ -118,6 +122,10 @@ signInBtn.onclick = async () => {
         } else {
             const errorContainer = document.querySelector('.re-pw-input');
             const json = await response.json();
+            const oldError = document.querySelector('.error-msg');
+            if (oldError) {
+                oldError.remove();
+            }
             const errorMsg = `
                     <div class='error-msg'> ${json.error}
                     </div>`
@@ -127,4 +135,11 @@ signInBtn.onclick = async () => {
         console.log(error);
     }
 };
+
+const signupInput = document.querySelector('.app');
+signupInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        signInBtn.click();
+    }
+});
 

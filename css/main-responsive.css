@@ -139,15 +139,6 @@
         font-size: 10px;
     }
 
-    .weekly-summary-card {
-        padding: 12px 14px;
-        border-radius: 16px;
-    }
-
-    .weekly-summary-text {
-        font-size: 14px;
-    }
-
     .main-box {
         padding: 16px 12px 12px;
         border-radius: 20px;
@@ -381,5 +372,139 @@
 
     .sort-option-arrow {
         font-size: 9px;
+    }
+}
+
+/* 로그인전  */
+@media (max-width: 768px) {
+    .empty-state-item {
+        padding: 16px 14px;
+        gap: 12px;
+        border-radius: 16px;
+        min-height: 80px;
+    }
+
+    .empty-state-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 18px;
+    }
+
+    .empty-state-title {
+        font-size: 14px;
+    }
+
+    .empty-state-desc {
+        font-size: 12px;
+    }
+
+    .empty-state-link {
+        height: 32px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+}
+/* =========================
+   AI Feature Card Responsive
+========================= */
+
+@media (max-width: 1180px) {
+    .ai-feature-card {
+        min-height: 214px;
+        padding: 16px 18px 14px;
+    }
+
+    .ai-feature-top {
+        grid-template-columns: minmax(0, 1.28fr) minmax(155px, 0.8fr);
+        column-gap: 10px;
+    }
+
+    .ai-feature-sub {
+        font-size: 12px;
+    }
+
+    .ai-feature-title {
+        font-size: 20px;
+    }
+
+    .ai-feature-desc {
+        max-width: 300px;
+        font-size: 12px;
+    }
+
+    .ai-feature-visual {
+        min-height: 116px;
+    }
+
+    .ai-feature-rabbit {
+        width: 190px;
+    }
+
+    .ai-feature-btn {
+        width: 200px;
+        height: 44px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-feature-card {
+        min-height: auto;
+        padding: 18px 16px 14px;
+        border-radius: 24px;
+    }
+
+    .ai-feature-top {
+        grid-template-columns: 1fr;
+        row-gap: 8px;
+        align-items: start;
+    }
+
+    .ai-feature-badge {
+        height: 34px;
+        font-size: 13px;
+    }
+
+    .ai-feature-sub {
+        margin: 12px 0 6px;
+        font-size: 13px;
+        white-space: normal;
+    }
+
+    .ai-feature-title {
+        font-size: 22px;
+        white-space: normal;
+    }
+
+    .ai-feature-desc {
+        max-width: none;
+        margin-top: 10px;
+        font-size: 13px;
+    }
+
+    .ai-feature-visual {
+        min-height: 120px;
+        justify-content: center;
+    }
+
+    .ai-feature-rabbit {
+        width: 180px;
+    }
+
+    .ai-feature-action {
+        margin-top: 8px;
+        justify-content: stretch;
+    }
+
+    .ai-feature-btn {
+        width: 100%;
+        height: 46px;
+        font-size: 14px;
+    }
+
+    .ai-feature-bottom-wave {
+        height: 40px;
+        bottom: -12px;
     }
 }

@@ -32,6 +32,13 @@ loginBtn.onclick = async () => {
     } catch (error) { console.log(error); }
 };
 
+const loginInput = document.querySelector('.app');
+loginInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        loginBtn.click();
+    }
+});
+
 google.onclick = function () {
     window.location.href = "/oauth2/authorization/google";
 };

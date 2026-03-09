@@ -1,18 +1,3 @@
-function refreshTotal() {
-    const priceElement = document.querySelectorAll('.service-price');
-    let totalPrice = 0;
-    priceElement.forEach(el => {
-        const priceText = el.innerText.replace(/[^0-9]/g, '');
-        if (priceText) {
-            totalPrice += parseInt(priceText);
-        }
-    });
-
-    const totalDisplay = document.querySelector('.total-money');
-    totalDisplay.innerHTML = totalPrice.toLocaleString() + "원";
-}
-
-
 function renderSubscriptionItems(result, targetBox) {
     targetBox.innerHTML = '';
     const resultList = result.map(item => {
@@ -65,14 +50,15 @@ function renderSubscriptionItems(result, targetBox) {
 const subscriptionList = document.querySelector('.sub-box2.subListContainer');
 document.addEventListener('DOMContentLoaded', async function () {
 
-    refreshTotal(); // 페이지 로드 시 총액 계산 실행
     subListRequestFetch();
-    refreshTotal();
 });
 
 
 async function subListRequestFetch() {
     let token = localStorage.getItem('access');
+    if (token) {
+        login.innerText = "로그아웃";
+    }
     let pageNumber = document.querySelector('.mysub-pagination .page-number.active').innerText;
     const param =
     {
@@ -91,7 +77,17 @@ async function subListRequestFetch() {
             credentials: "include"
         });
         if (tokenReissue.status === 401) {
-            const noSub = `<a href="/login">로그인 후 나만의 구독 서비스를 추가하세요!.</a>`
+            const noSub = `
+                <li class="empty-state-item login-empty-state">
+                    <div class="empty-state-icon">🔐</div>
+                    <div class="empty-state-texts">
+                        <p class="empty-state-title">로그인이 필요합니다</p>
+                        <p class="empty-state-desc">로그인 후 나만의 구독 서비스를 추가해보세요.</p>
+                    </div>
+                    <a href="/login" class="empty-state-link">로그인</a>
+                </li>
+            `;
+            login.innerText = "로그인";
             subscriptionList.insertAdjacentHTML('beforeend', noSub)
         } else if (tokenReissue.status === 200) {
             const tokenResult = await tokenReissue.json();
@@ -103,7 +99,15 @@ async function subListRequestFetch() {
                 });
             const requestResult = await response2.json();
             if (requestResult.data.content.length === 0) {
-                const noSub = `<p>구독 정보가 없습니다.</p>`
+                const noSub = `
+                    <li class="empty-state-item subscription-empty-state">
+                        <div class="empty-state-icon">❌</div>
+                        <div class="empty-state-texts">
+                            <p class="empty-state-title">구독 정보가 없습니다</p>
+                            <p class="empty-state-desc">아직 등록된 구독 서비스가 없어요. 새 서비스를 추가해보세요.</p>
+                        </div>
+                    </li>
+                `;
                 subscriptionList.insertAdjacentHTML('beforeend', noSub);
             } else {
                 renderSubscriptionItems(requestResult.data.content, subscriptionList);
@@ -114,7 +118,15 @@ async function subListRequestFetch() {
     else if (subGetResponse.status === 200) {
         const result = await subGetResponse.json();
         if (result.data.content.length === 0) {
-            const noSub = `<p>구독 정보가 없습니다.</p>`
+            const noSub = `
+            <li class="empty-state-item subscription-empty-state">
+                <div class="empty-state-icon">❌</div>
+                <div class="empty-state-texts">
+                    <p class="empty-state-title">구독 정보가 없습니다</p>
+                    <p class="empty-state-desc">아직 등록된 구독 서비스가 없어요. 새 서비스를 추가해보세요.</p>
+                </div>
+            </li>
+        `;
             subscriptionList.insertAdjacentHTML('beforeend', noSub);
         } else {
             renderSubscriptionItems(result.data.content, subscriptionList);
@@ -201,18 +213,6 @@ pageBtnPrev.onclick = function () {
     subListRequestFetch();
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 function getCycle(paymentCycle, interval) {
     let result = "매";

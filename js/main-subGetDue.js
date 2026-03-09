@@ -16,10 +16,6 @@ function getBadgeColor(diffDay) {
 
 function renderSubscriptionItemsDue(result, targetBox) {
     targetBox.innerHTML = '';
-    if (result.length === 0) {
-        let noAlertSubItem = `<p class="no-alert-subscription">임박한 구독 목록이 없습니다.</p>`
-        targetBox.insertAdjacentHTML('beforeend', noAlertSubItem);
-    }
 
     const subItem = result.map(item => {
         const diffDay = getDiffDay(item.dday);
